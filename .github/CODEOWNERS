@@ -1,0 +1,2 @@
+# advice from GitHub: The most secure method is to define a CODEOWNERS file in the .github directory of the repository
+/.github/   @camphul
