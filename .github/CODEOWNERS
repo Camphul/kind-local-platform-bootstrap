@@ -1,0 +1,4 @@
+# Kind Local Platform Bootstrap CODEOWNERS
+# Project Administration
+# Global owners for core project files
+*  @camphul @logic-shift/administrators
