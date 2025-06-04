@@ -4,3 +4,4 @@ out/
 .env
 .vscode/*
 **/charts/*
+.kubeconfig_path

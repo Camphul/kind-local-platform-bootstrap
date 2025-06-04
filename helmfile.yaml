@@ -4,6 +4,7 @@ repositories:
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
 releases:
+  # ingress controller
   - name: ingress-nginx
     namespace: ingress-nginx
     createNamespace: true
@@ -17,8 +18,8 @@ releases:
           ingressClassResource:
             default: true
             enabled: true
-          extraArgs:
-            publish-status-address: localhost
+#          extraArgs:
+#            publish-status-address: localhost
           hostPort:
             enabled: true
           service:
@@ -27,3 +28,6 @@ releases:
           nodeSelector:
             kubernetes.io/os: 'linux'
             ingress-ready: 'true'
+  ## regular k8s manifests
+  - name: manifests
+    chart: "./manifests"
