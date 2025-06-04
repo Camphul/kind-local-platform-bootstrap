@@ -35,6 +35,11 @@ Still WIP but now:
 - `ingress-nginx` that uses hostPort 80/443 TCP so you can access it through `localhost:80` / `localhost:443`
 - more stuff to come
 
+## Helmfile Environments
+
+Default environment is aimed at Kind clusters running on localhost.
+Copy [.env.example](.env.example) into [.env](.env) for configuring Helmfile values.
+
 ## License
 
 This project is licensed under the terms of the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).  

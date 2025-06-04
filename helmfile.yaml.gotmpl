@@ -1,10 +1,20 @@
+environments:
+  default:
+    values:
+      - environments/default.yaml
+---
 helmDefaults:
   kubeContext: kind-local-kind
+# Define domain at the top level
+{{ $domain := coalesce (env "INGRESS_BASE_DOMAIN") .Values.domain "localhost" }}
+
+commonLabels:
+  "app/ingress-domain": '{{ $domain }}'
+
 repositories:
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
 releases:
-  # ingress controller
   - name: ingress-nginx
     namespace: ingress-nginx
     createNamespace: true
@@ -18,16 +28,16 @@ releases:
           ingressClassResource:
             default: true
             enabled: true
-#          extraArgs:
-#            publish-status-address: localhost
           hostPort:
             enabled: true
           service:
             type: NodePort
             externalTrafficPolicy: Local
           nodeSelector:
-            kubernetes.io/os: 'linux'
-            ingress-ready: 'true'
-  ## regular k8s manifests
-  - name: manifests
-    chart: "./manifests"
+            kubernetes.io/os: linux
+            ingress-ready: "true"
+  - name: ingress-test
+    chart: ./manifests/ingress-test
+    values:
+      - domain: "{{ $domain }}"
+
