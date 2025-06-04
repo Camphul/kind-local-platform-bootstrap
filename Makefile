@@ -1,4 +1,4 @@
-.PHONY: cluster-create cluster-destroy helmfile-apply help
+.PHONY: cluster-create cluster-destroy helmfile-apply up down help
 .DEFAULT_GOAL := help
 
 help:
